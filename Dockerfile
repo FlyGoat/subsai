@@ -1,5 +1,5 @@
 #FROM python:3.10.6
-FROM pytorch/pytorch:2.0.1-cuda11.7-cudnn8-runtime
+FROM pytorch/pytorch:2.5.1-cuda12.4-cudnn9-runtime
 
 WORKDIR /subsai
 
@@ -9,7 +9,7 @@ ENV DEBIAN_FRONTEND noninteractive
 RUN apt-get update && \
     apt-get upgrade -y && \
     apt-get install -y git && \
-    apt-get -y install gcc mono-mcs && \
+    apt-get install -y gcc mono-mcs ffmpeg && \
     rm -rf /var/lib/apt/lists/*
 
 RUN pip install --no-cache-dir -r requirements.txt
